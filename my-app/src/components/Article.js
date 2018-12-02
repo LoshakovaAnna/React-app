@@ -1,23 +1,43 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-function Article(props){
-    const text = props.text;
-    const title = props.title;
+class Article extends Component{
+  /*
+    constructor(props){
+        super(props);
+        this.state = {
+            isOpen : false
+        };
+    }*/
+    state = {
+        isOpen : false
+    };
 
-    const body = <section>{text}</section>
+    render(){
+       
+    const text = this.props.text;
+    const title = this.props.title;
+
+    const body = this.state.isOpen && <section>{text}</section>;
     return (
         <div>
             <h2>{title}
-                <button onClick={handleClick} style={{marginLeft:"10px"}}>close</button>
+                <button onClick={this.handleClick} style={{marginLeft:"10px"}}>
+                {this.state.isOpen ? "open" : "closed"}
+                </button>
             </h2>
             {body}
             <h3>creation date: {(new Date().toDateString())}</h3>
         </div>
     )
-};
+    };
 
-function handleClick(){
-    console.log("click is work");
+    
+    handleClick = () => {
+        console.log("click is work");
+        this.setState ({ isOpen : !this.state.isOpen    });
+    }
+
 }
+
 
 export default Article;

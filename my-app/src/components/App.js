@@ -6,7 +6,7 @@ function App(props){
     return(
         <div>
             <h1>{nameApp}</h1>
-            <Article text="передаю текст" title="new title"  />
+            <Article text="text text text text text text text text text text " title="new title"  />
         </div>
     )
 };
