@@ -13,23 +13,28 @@ class Article extends Component{
     };
 
     render(){
-       
-    const text = this.props.text;
-    const title = this.props.title;
+        const articles = this.props.art;
 
-    const body = this.state.isOpen && <section>{text}</section>;
-    return (
-        <div>
-            <h2>{title}
-                <button onClick={this.handleClick} style={{marginLeft:"10px"}}>
-                {this.state.isOpen ? "open" : "closed"}
-                </button>
-            </h2>
-            {body}
-            <h3>creation date: {(new Date().toDateString())}</h3>
-        </div>
-    )
-    };
+        const text = articles.text;
+        const title = articles.title;
+
+        const body = this.state.isOpen && <section className="card-text">{text}</section>;
+        return (
+            <div className="card mx-auto" style={{width: "50%" }}>
+                <div className="card-header">
+                    <h2>{title}
+                        <button onClick={this.handleClick} className="btn btn-primary float-right">
+                        {this.state.isOpen ? "open" : "closed"}
+                        </button>
+                    </h2>
+                </div>
+                <div className="card-body">
+                    {body}
+                    <h3 className="card-subtitle text-muted">creation date: {(new Date().toDateString())}</h3>
+                </div>
+            </div>
+        )
+        };
 
     
     handleClick = () => {
